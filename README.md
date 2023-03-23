@@ -1,6 +1,6 @@
 # Terraform Provider GraphQL Schema
 
-TODO introduction
+This provider utilizes data blocks to generate a GraphQL schema document, allowing easier assembly of a GraphQL schema through Terraform modules and existing structures.
 
 ## Build provider
 
