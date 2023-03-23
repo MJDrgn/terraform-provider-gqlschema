@@ -42,6 +42,10 @@ func (p *gqlProvider) DataSources(_ context.Context) []func() datasource.DataSou
 		NewTypeDataSource,
 		NewFieldDataSource,
 		NewEnumDataSource,
+		NewUnionDataSource,
+		NewScalarDataSource,
+		NewRootTypeDataSource,
+		NewSchemaDataSource,
 	}
 }
 

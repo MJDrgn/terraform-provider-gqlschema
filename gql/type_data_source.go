@@ -44,7 +44,7 @@ func (d *typeDataSource) Schema(_ context.Context, _ datasource.SchemaRequest, r
 				Computed: false,
 				Optional: true,
 				Validators: []validator.String{
-					stringvalidator.OneOf("output", "input"),
+					stringvalidator.OneOf("output", "input", "interface"),
 				},
 			},
 			"schema": schema.StringAttribute{
@@ -172,8 +172,12 @@ func (d *typeDataSource) Read(ctx context.Context, req datasource.ReadRequest, r
 
 	if state.Mode.IsNull() || state.Mode.ValueString() == "output" {
 		builder.WriteString("type ")
-	} else {
+	} else if state.Mode.ValueString() == "input" {
 		builder.WriteString("input ")
+	} else if state.Mode.ValueString() == "interface" {
+		builder.WriteString("interface")
+	} else {
+		panic("unexpected Mode: " + state.Mode.ValueString())
 	}
 
 	builder.WriteString(state.ID.ValueString())
