@@ -24,7 +24,7 @@ type gqlProvider struct{}
 
 // Metadata returns the provider type name.
 func (p *gqlProvider) Metadata(_ context.Context, _ provider.MetadataRequest, resp *provider.MetadataResponse) {
-	resp.TypeName = "gql"
+	resp.TypeName = "gqlschema"
 }
 
 // Schema defines the provider-level schema for configuration data.
